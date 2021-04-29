@@ -1,9 +1,28 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>edita-tarefa</ion-title>
+      <ion-buttons slot="start">
+          <ion-button routerLink="/tarefas">
+            <ion-icon name="arrow-back-outline">
+            </ion-icon>
+          </ion-button>
+        </ion-buttons>
+
+    <ion-title>Edita-Tarefa</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+    <ion-input type="text" 
+      placeholder="Nome" 
+      [(ngModel)]="nome" >
+  
+    </ion-input>
+  
+      <ion-input type="text" 
+       placeholder="Descrição" 
+       [(ngModel)]="descricao" >
+  
+      </ion-input>
 
-</ion-content>
+    <ion-button >Ok</ion-button>
+  </ion-content>
