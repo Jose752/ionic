@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { TarefaService } 
   from '../../servicos/tarefa.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-edita-tarefa',
@@ -11,12 +12,17 @@ import { TarefaService }
 })
 export class EditaTarefaPage implements OnInit {
 
+  id: string;
   nome: string;
   descricao: string;
   constructor(private servico: TarefaService,
-              private nav: NavController) { }
+              private nav: NavController,
+              private rota: ActivatedRoute) { }
 
   ngOnInit() {
+    this.id = this.rota.snapshot.params['idtarefa'];
+    this.nome = this.rota.snapshot.params['nomeTarefa'];
+    this.descricao = this.rota.snapshot.params['descTarefa']
   }
 
   processar() {
@@ -27,7 +33,11 @@ export class EditaTarefaPage implements OnInit {
     tarefa['descricao'] = this.descricao;
 
     console.log(tarefa);
-    this.servico.incluir(tarefa);
+    if (this.id == null) {
+      this.servico.incluir(tarefa);
+    } else {
+      this.servico.alterar(tarefa, this.id);
+    }
     this.nav.navigateForward("tarefas");
   }
 }

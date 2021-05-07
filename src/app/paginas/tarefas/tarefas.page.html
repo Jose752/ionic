@@ -18,5 +18,18 @@
 </ion-header>
 
 <ion-content>
+  <ion-card *ngFor="let item of tarefas">
+    <ion-card-header>{{item.nome}}</ion-card-header>
+    <ion-card-content>
+      {{item.descricao}}
 
+      <ion-button (click)="iniciarAlteracao(item)">
+        Alterar
+      </ion-button>
+    
+      <ion-button (click)="excluir(item)">
+        Excluir
+      </ion-button>
+    </ion-card-content> 
+  </ion-card>
 </ion-content>

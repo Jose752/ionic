@@ -18,5 +18,9 @@
 </ion-header>
 
 <ion-content>
-
+  <ion-card *ngFor="let item of contatos">
+    <ion-card-header>{{item.nome}}</ion-card-header>
+    <ion-card-content>{{item.telefone}}</ion-card-content>
+    <ion-card-content>{{item.email}}</ion-card-content>
+  </ion-card>
 </ion-content>
